@@ -7,9 +7,8 @@ from langchain_core.prompts import ChatPromptTemplate
 
 # Carica le chiavi dal file .env
 load_dotenv()
-os.environ['LANGCHAIN_API_KEY'] = os.getenv('LANGCHAIN_API_KEY')
-os.environ['GOOGLE_API_KEY'] = os.getenv('GOOGLE_API_KEY')
-
+os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
+os.environ["LANGCHAIN_API_KEY"] = st.secrets["LANGCHAIN_API_KEY"]
 # Configura il modello LLM
 llm = GoogleGenerativeAI(model='gemini-pro', temperature=0.1)
 
