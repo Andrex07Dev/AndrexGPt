@@ -3,6 +3,7 @@ import streamlit as st
 import time
 from dotenv import load_dotenv
 from langchain_google_genai import GoogleGenerativeAI
+from langchain_core.messages import HumanMessage
 from langchain_core.prompts import ChatPromptTemplate
 
 # Carica le chiavi dal file .env
@@ -178,20 +179,20 @@ def gradual_response(response, container, delay=0.05):
         time.sleep(delay)  # Ritardo tra le parole
 
 # Funzione per la pagina Andrex GPT (accessibile dopo login)
+
 def andrex_gpt_page():
     st.title("Andrex GPT - Genera Contenuto")
-    
-    # Barra di input spostata in basso
+
     user_query_input = st.text_input("Cosa vuoi chiedere ad AndrexGPT?", key="user_query_input")
-    
+
     if user_query_input:
-        response = llm.invoke(user_query_input)
-        
-        # Crea un contenitore per la risposta progressiva
+        # Usa HumanMessage per modelli chat-based
+        chat_message = HumanMessage(content=user_query_input)
+        response = llm.invoke([chat_message])  # Passa come lista
+
+        # Visualizza la risposta
         response_container = st.empty()
-        
-        # Scrivi la risposta gradualmente
-        gradual_response(response, response_container)
+        gradual_response(response.content, response_container)
 
 # Funzione principale per gestire il flusso delle pagine
 def main():
