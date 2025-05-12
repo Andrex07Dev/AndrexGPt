@@ -6,9 +6,8 @@ from langchain_core.messages import HumanMessage
 from langchain_core.prompts import ChatPromptTemplate
 
 # Imposta direttamente le chiavi API
-os.environ["GOOGLE_API_KEY"] = "AIzaSyAbYwfM-pResPkkSYMQUT9AW-bS-tfinM4"
-os.environ["LANGCHAIN_API_KEY"] = "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"
-
+os.environ["GOOGLE_API_KEY"] = "AIzaSyCLAPsK-_7WSzh1voqCyO_CxeGCUNqg_W4"
+os.environ["LANGCHAIN_API_KEY"] = "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"
 # Configura il modello LLM
 llm = ChatGoogleGenerativeAI(model='gemini-pro', temperature=0.1)
 
