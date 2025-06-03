@@ -43,15 +43,6 @@ def register_user(email, password, username, users_db, next_user_id):
 # Layout principale
 st.set_page_config(page_title="Andrex GPT", layout="centered")
 
-# Nascondi la barra laterale e la barra di opzioni in alto a destra
-st.markdown("""
-<style>
-.css-1yhjh9e {
-    display: none;
-}
-</style>
-""", unsafe_allow_html=True)
-
 # Pagina di login
 def login_page(users_db):
     st.title("Benvenuto ad Andrex GPT - Login")
